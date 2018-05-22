@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         
         self.locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.allowsBackgroundLocationUpdates = true
         self.locationManager.startMonitoringSignificantLocationChanges()
 //        self.locationManager.activityType = .
 //        self.locationManager.pausesLocationUpdatesAutomatically = false
