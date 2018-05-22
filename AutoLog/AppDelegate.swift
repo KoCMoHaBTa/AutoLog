@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+//            
+//            print("gg")
+//        }
+        
         return true
     }
 

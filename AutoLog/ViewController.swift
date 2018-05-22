@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
 //    let motionManager = CMMotionManager()
     
-    let motionActivityManager = CMMotionActivityManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
