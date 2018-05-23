@@ -21,6 +21,16 @@ class ActivitiesViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        self.loadData()
+    }
+    
+    private func loadData() {
         
         self.motionActivityManager.queryActivityStarting(from: self.fromDate, to: self.toDate, to: .main) { (activities, error) in
             
@@ -28,6 +38,8 @@ class ActivitiesViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+    
+    //MARK: - UITableViewDataSource & UITableViewDelegate
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -44,7 +56,7 @@ class ActivitiesViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as! ActivityCell
         
         let activity = self.activities[indexPath.row]
-        cell.configure(wtih: activity)
+        cell.configure(with: activity)
         
         return cell
     }
@@ -62,9 +74,18 @@ class ActivityCell: UITableViewCell {
     @IBOutlet weak var cylcingImageView: UIImageView!
     @IBOutlet weak var unknownImageView: UIImageView!
     
-    func configure(wtih activity: CMMotionActivity) {
+    private static let dateFormatter: DateFormatter = {
         
-        self.dateLabel.text = activity.startDate.description
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        
+        return dateFormatter
+    }()
+    
+    func configure(with activity: CMMotionActivity) {
+        
+        self.dateLabel.text = type(of: self).dateFormatter.string(from: activity.startDate)
         
         switch activity.confidence {
             

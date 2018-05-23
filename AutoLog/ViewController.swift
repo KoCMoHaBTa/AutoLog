@@ -60,19 +60,20 @@ extension ViewController: CLLocationManagerDelegate {
             
             return
         }
-        
+    
         UIApplication.shared.performBackgroundTask { (completion) in
             
-            CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            Location.makeWith(location: location) { (location) in
                 
-                guard let placemark = placemarks?.first else {
+                guard let location = location else {
                     
+                    completion()
                     return
                 }
                 
-                let address = CNPostalAddressFormatter.string(from: CNMutablePostalAddress(placemark: placemark), style: .mailingAddress)
+                Storage.shared.significantLocations.append(location)
                 
-                let content = UNMutableNotificationContent(title: "didUpdateLocations", body: address)
+                let content = UNMutableNotificationContent(title: "didUpdateLocations", body: location.address)
                 let request = UNNotificationRequest(content: content)
                 UNUserNotificationCenter.current().add(request) { error in
                     
@@ -83,29 +84,27 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        
+                
         UIApplication.shared.performBackgroundTask { (completion) in
             
-            let location = CLLocation(latitude: visit.coordinate.latitude, longitude: visit.coordinate.longitude)
-            CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            Visit.makeWith(visit: visit, completion: { (visit) in
                 
-                guard let placemark = placemarks?.first else {
+                guard let visit = visit else {
                     
+                    completion()
                     return
                 }
                 
-                let address = CNPostalAddressFormatter.string(from: CNMutablePostalAddress(placemark: placemark), style: .mailingAddress)
+                Storage.shared.visits.append(visit)
                 
-                let content = UNMutableNotificationContent(title: "didVisit", body: address)
+                let content = UNMutableNotificationContent(title: "didVisit", body: visit.address)
                 let request = UNNotificationRequest(content: content)
                 UNUserNotificationCenter.current().add(request) { error in
                     
                     completion()
                 }
-            }
+            })
         }
-        
-        
     }
 }
 
