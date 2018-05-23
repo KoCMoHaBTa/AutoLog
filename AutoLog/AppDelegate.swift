@@ -22,13 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
             
-            
         }
-        
-//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-//            
-//            print("gg")
-//        }
         
         return true
     }
@@ -57,21 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-        DispatchQueue.main.async {
+        application.performBackgroundTask { (completion) in
             
-            let content = UNMutableNotificationContent()
-            content.title = "Background Fetch"
-            content.sound = .default()
-            
-            let request = UNNotificationRequest(identifier: "Background Fetch", content: content, trigger: nil)
-            
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+            let content = UNMutableNotificationContent(title: "Background Fetch")
+            let request = UNNotificationRequest(content: content)
+            UNUserNotificationCenter.current().add(request) { (_) in
                 
-                DispatchQueue.main.async {
-                    
-                    completionHandler(.newData)
-                }
-            })
+                completionHandler(.newData)
+                completion()
+            }
         }
     }
 }

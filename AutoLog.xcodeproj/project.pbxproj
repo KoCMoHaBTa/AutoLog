@@ -16,6 +16,7 @@
 		E65DD24D20A4ED5E00E6B2CC /* AutoLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65DD24C20A4ED5E00E6B2CC /* AutoLogTests.swift */; };
 		E69DC3FC20B4AE3700BEDC57 /* DateRangePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC3FB20B4AE3700BEDC57 /* DateRangePickerViewController.swift */; };
 		E69DC3FE20B4AE6D00BEDC57 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC3FD20B4AE6D00BEDC57 /* ActivitiesViewController.swift */; };
+		E69DC40020B54B2A00BEDC57 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC3FF20B54B2A00BEDC57 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		E65DD24E20A4ED5E00E6B2CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E69DC3FB20B4AE3700BEDC57 /* DateRangePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangePickerViewController.swift; sourceTree = "<group>"; };
 		E69DC3FD20B4AE6D00BEDC57 /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
+		E69DC3FF20B54B2A00BEDC57 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				E65DD23420A4ED5C00E6B2CC /* AppDelegate.swift */,
+				E69DC3FF20B54B2A00BEDC57 /* Extensions.swift */,
 				E65DD23620A4ED5C00E6B2CC /* ViewController.swift */,
 				E69DC3FB20B4AE3700BEDC57 /* DateRangePickerViewController.swift */,
 				E69DC3FD20B4AE6D00BEDC57 /* ActivitiesViewController.swift */,
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E65DD23720A4ED5C00E6B2CC /* ViewController.swift in Sources */,
+				E69DC40020B54B2A00BEDC57 /* Extensions.swift in Sources */,
 				E65DD23D20A4ED5C00E6B2CC /* AutoLog.xcdatamodeld in Sources */,
 				E69DC3FE20B4AE6D00BEDC57 /* ActivitiesViewController.swift in Sources */,
 				E69DC3FC20B4AE3700BEDC57 /* DateRangePickerViewController.swift in Sources */,
