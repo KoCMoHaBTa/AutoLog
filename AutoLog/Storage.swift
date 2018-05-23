@@ -35,16 +35,26 @@ class Storage {
         self.load()
     }
     
+    let significantLocationsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("significantLocations", isDirectory: false).appendingPathExtension("plist").path
+    let visitsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("visits", isDirectory: false).appendingPathExtension("plist").path
+    
     func save() {
         
+        let significantLocationsSuccess = NSKeyedArchiver.archiveRootObject(self.significantLocations, toFile: self.significantLocationsPath)
+        print("save significantLocations: \(significantLocationsSuccess)")
+        
+        let visitsSuccess = NSKeyedArchiver.archiveRootObject(self.visits, toFile: self.visitsPath)
+        print("save visits: \(visitsSuccess)")
     }
     
     func load() {
         
+        self.significantLocations = NSKeyedUnarchiver.unarchiveObject(withFile: self.significantLocationsPath) as? [Location] ?? []
+        self.visits = NSKeyedUnarchiver.unarchiveObject(withFile: self.visitsPath) as? [Visit] ?? []
     }
 }
 
-class Location {
+class Location: NSObject, NSCoding {
     
     let location: CLLocation
     let placemark: CLPlacemark
@@ -55,6 +65,27 @@ class Location {
         self.location = location
         self.placemark = placemark
         self.address = address
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        
+        aCoder.encode(self.location, forKey: "location")
+        aCoder.encode(self.placemark, forKey: "placemark")
+        aCoder.encode(self.address, forKey: "address")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        
+        guard
+        let location = aDecoder.decodeObject(forKey: "location") as? CLLocation,
+        let placemark = aDecoder.decodeObject(forKey: "placemark") as? CLPlacemark,
+        let address = aDecoder.decodeObject(forKey: "address") as? String
+        else {
+            
+            return nil
+        }
+        
+        self.init(location: location, placemark: placemark, address: address)
     }
     
     static func makeWith(location: CLLocation, completion: @escaping (Location?) -> Void) {
@@ -75,7 +106,7 @@ class Location {
     }
 }
 
-class Visit {
+class Visit: NSObject, NSCoding {
     
     let visit: CLVisit
     let location: CLLocation
@@ -88,6 +119,29 @@ class Visit {
         self.location = location
         self.placemark = placemark
         self.address = address
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        
+        aCoder.encode(self.visit, forKey: "visit")
+        aCoder.encode(self.location, forKey: "location")
+        aCoder.encode(self.placemark, forKey: "placemark")
+        aCoder.encode(self.address, forKey: "address")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        
+        guard
+        let visit = aDecoder.decodeObject(forKey: "visit") as? CLVisit,
+        let location = aDecoder.decodeObject(forKey: "location") as? CLLocation,
+        let placemark = aDecoder.decodeObject(forKey: "placemark") as? CLPlacemark,
+        let address = aDecoder.decodeObject(forKey: "address") as? String
+        else {
+            
+            return nil
+        }
+        
+        self.init(visit: visit, location: location, placemark: placemark, address: address)
     }
     
     static func makeWith(visit: CLVisit, completion: @escaping (Visit?) -> Void) {
