@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import ContactsUI
+import MapKit
 
 class Storage {
     
@@ -57,7 +58,7 @@ class Storage {
     }
 }
 
-class Location: NSObject, NSCoding {
+class Location: NSObject, NSCoding, MKAnnotation {
     
     let location: CLLocation
     let placemark: CLPlacemark
@@ -69,6 +70,25 @@ class Location: NSObject, NSCoding {
         self.placemark = placemark
         self.address = address
     }
+    
+    static func makeWith(location: CLLocation, completion: @escaping (Location?) -> Void) {
+        
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            
+            guard let placemark = placemarks?.first else {
+                
+                completion(nil)
+                return
+            }
+            
+            let address = CNPostalAddressFormatter.string(from: CNMutablePostalAddress(placemark: placemark), style: .mailingAddress)
+            
+            let result = Location(location: location, placemark: placemark, address: address)
+            completion(result)
+        }
+    }
+    
+    //MARK: - NSCoding
     
     func encode(with aCoder: NSCoder) {
         
@@ -91,25 +111,25 @@ class Location: NSObject, NSCoding {
         self.init(location: location, placemark: placemark, address: address)
     }
     
-    static func makeWith(location: CLLocation, completion: @escaping (Location?) -> Void) {
+    //MARK: - MKAnnotation
+    
+    var coordinate: CLLocationCoordinate2D {
         
-        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
-            
-            guard let placemark = placemarks?.first else {
-                
-                completion(nil)
-                return
-            }
-            
-            let address = CNPostalAddressFormatter.string(from: CNMutablePostalAddress(placemark: placemark), style: .mailingAddress)
-            
-            let result = Location(location: location, placemark: placemark, address: address)
-            completion(result)
-        }
+        return self.location.coordinate
+    }
+    
+    var title: String? {
+        
+        return self.address
+    }
+    
+    var subtitle: String? {
+        
+        return nil
     }
 }
 
-class Visit: NSObject, NSCoding {
+class Visit: NSObject, NSCoding, MKAnnotation {
     
     let visit: CLVisit
     let location: CLLocation
@@ -123,6 +143,26 @@ class Visit: NSObject, NSCoding {
         self.placemark = placemark
         self.address = address
     }
+    
+    static func makeWith(visit: CLVisit, completion: @escaping (Visit?) -> Void) {
+        
+        let location = CLLocation(latitude: visit.coordinate.latitude, longitude: visit.coordinate.longitude)
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            
+            guard let placemark = placemarks?.first else {
+                
+                completion(nil)
+                return
+            }
+            
+            let address = CNPostalAddressFormatter.string(from: CNMutablePostalAddress(placemark: placemark), style: .mailingAddress)
+            
+            let result = Visit(visit: visit, location: location, placemark: placemark, address: address)
+            completion(result)
+        }
+    }
+    
+    //MARK: - NSCoding
     
     func encode(with aCoder: NSCoder) {
         
@@ -147,21 +187,20 @@ class Visit: NSObject, NSCoding {
         self.init(visit: visit, location: location, placemark: placemark, address: address)
     }
     
-    static func makeWith(visit: CLVisit, completion: @escaping (Visit?) -> Void) {
+    //MARK: - MKAnnotation
+    
+    var coordinate: CLLocationCoordinate2D {
         
-        let location = CLLocation(latitude: visit.coordinate.latitude, longitude: visit.coordinate.longitude)
-        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
-            
-            guard let placemark = placemarks?.first else {
-                
-                completion(nil)
-                return
-            }
-            
-            let address = CNPostalAddressFormatter.string(from: CNMutablePostalAddress(placemark: placemark), style: .mailingAddress)
-            
-            let result = Visit(visit: visit, location: location, placemark: placemark, address: address)
-            completion(result)
-        }
+        return self.location.coordinate
+    }
+    
+    var title: String? {
+        
+        return self.address
+    }
+    
+    var subtitle: String? {
+        
+        return nil
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import MapKit
 
 class VisitsViewController: UITableViewController {
     
@@ -24,6 +25,22 @@ class VisitsViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         self.loadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destination = segue.destination as! MapViewController
+        
+        if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
+            
+            let visit = self.visits[indexPath.row]
+            destination.points = [visit]
+        }
+        
+        if sender is UIBarButtonItem {
+            
+            destination.points = self.visits
+        }
     }
     
     private func loadData() {
