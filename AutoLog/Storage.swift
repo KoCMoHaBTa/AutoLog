@@ -49,8 +49,11 @@ class Storage {
     
     func load() {
         
-        self.significantLocations = NSKeyedUnarchiver.unarchiveObject(withFile: self.significantLocationsPath) as? [Location] ?? []
-        self.visits = NSKeyedUnarchiver.unarchiveObject(withFile: self.visitsPath) as? [Visit] ?? []
+        let significantLocations = NSKeyedUnarchiver.unarchiveObject(withFile: self.significantLocationsPath) as! [Location]
+        let visits = NSKeyedUnarchiver.unarchiveObject(withFile: self.visitsPath) as! [Visit]
+        
+        self.significantLocations = significantLocations
+        self.visits = visits
     }
 }
 
