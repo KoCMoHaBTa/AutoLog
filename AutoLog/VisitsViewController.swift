@@ -70,6 +70,16 @@ class VisitsViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            self.visits.remove(at: indexPath.row)
+            Storage.shared.visits = self.visits
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
 
 extension UITableViewCell {

@@ -50,6 +50,16 @@ class ViewController: UIViewController {
         
         UNUserNotificationCenter.current().add(request)
     }
+    
+    @IBAction func deleteAllLocations() {
+        
+        Storage.shared.significantLocations = []
+    }
+    
+    @IBAction func deleteAllVisits() {
+        
+        Storage.shared.visits = []
+    }
 }
 
 extension ViewController: CLLocationManagerDelegate {

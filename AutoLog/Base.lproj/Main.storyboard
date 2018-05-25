@@ -31,13 +31,32 @@
                                     <action selector="testLocalNotification" destination="BYZ-38-t0r" eventType="touchUpInside" id="B3g-hB-oAW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJU-4T-9FP">
+                                <rect key="frame" x="233" y="626" width="101" height="30"/>
+                                <state key="normal" title="delete all visits"/>
+                                <connections>
+                                    <action selector="deleteAllVisits" destination="BYZ-38-t0r" eventType="touchUpInside" id="vFg-Tj-bpR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wo-Ic-b9Z">
+                                <rect key="frame" x="30" y="626" width="128" height="30"/>
+                                <state key="normal" title="delete all locations"/>
+                                <connections>
+                                    <action selector="deleteAllLocations" destination="BYZ-38-t0r" eventType="touchUpInside" id="3MK-2H-B5V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4wo-Ic-b9Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="6m6-LB-M9u"/>
                             <constraint firstItem="8rp-u4-ibk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7Ks-Le-3h6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4wo-Ic-b9Z" secondAttribute="bottom" constant="73" id="AZS-4y-MOa"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dyr-1D-kYE" secondAttribute="trailing" constant="20" symbolic="YES" id="Muf-JK-29x"/>
+                            <constraint firstItem="QJU-4T-9FP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4wo-Ic-b9Z" secondAttribute="trailing" constant="5" id="Pn7-5e-1uD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QJU-4T-9FP" secondAttribute="bottom" constant="73" id="ZcP-fA-euB"/>
                             <constraint firstItem="dyr-1D-kYE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="41" id="bnp-le-EIk"/>
                             <constraint firstItem="8rp-u4-ibk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jHT-8p-Yhe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QJU-4T-9FP" secondAttribute="trailing" constant="41" id="lZj-TI-FYz"/>
                             <constraint firstItem="dyr-1D-kYE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="sfu-hZ-gQo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

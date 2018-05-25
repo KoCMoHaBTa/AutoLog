@@ -70,6 +70,16 @@ class SignificantLocationsViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            self.locations.remove(at: indexPath.row)
+            Storage.shared.significantLocations = self.locations
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
 
 extension UITableViewCell {
