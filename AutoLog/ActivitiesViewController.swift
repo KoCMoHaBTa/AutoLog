@@ -12,8 +12,8 @@ import CoreMotion
 
 class ActivitiesViewController: UITableViewController {
     
-    var fromDate: Date!
-    var toDate: Date!
+    var start: Date!
+    var end: Date!
     
     let motionActivityManager = CMMotionActivityManager()
     var activities: [CMMotionActivity] = []
@@ -32,10 +32,10 @@ class ActivitiesViewController: UITableViewController {
     
     private func loadData() {
         
-        self.motionActivityManager.queryActivityStarting(from: self.fromDate, to: self.toDate, to: .main) { (activities, error) in
+        self.motionActivityManager.queryActivityStarting(from: self.start, to: self.end, to: .main) { [weak self] (activities, error) in
             
-            self.activities = activities ?? []
-            self.tableView.reloadData()
+            self?.activities = activities ?? []
+            self?.tableView.reloadData()
         }
     }
     

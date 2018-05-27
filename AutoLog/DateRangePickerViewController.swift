@@ -11,21 +11,29 @@ import UIKit
 
 class DateRangePickerViewController: UIViewController {
     
-    @IBOutlet weak var fromDatePicker: UIDatePicker!
-    @IBOutlet weak var toDatePicker: UIDatePicker!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
-        self.fromDatePicker.date = Date().addingTimeInterval(-7200)
-        self.toDatePicker.date = Date()
+        self.startDatePicker.date = Date().addingTimeInterval(-7200)
+        self.endDatePicker.date = Date()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as! ActivitiesViewController
-        destination.fromDate = self.fromDatePicker.date
-        destination.toDate = self.toDatePicker.date
+        if let destination = segue.destination as? ActivitiesViewController {
+            
+            destination.start = self.startDatePicker.date
+            destination.end = self.endDatePicker.date
+        }
+     
+        if let destination = segue.destination as? DrivingActivitiesViewController {
+            
+            destination.start = self.startDatePicker.date
+            destination.end = self.endDatePicker.date
+        }
     }
 }

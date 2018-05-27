@@ -16,6 +16,7 @@
 		E65DD23F20A4ED5E00E6B2CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E65DD23E20A4ED5E00E6B2CC /* Assets.xcassets */; };
 		E65DD24220A4ED5E00E6B2CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E65DD24020A4ED5E00E6B2CC /* LaunchScreen.storyboard */; };
 		E65DD24D20A4ED5E00E6B2CC /* AutoLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65DD24C20A4ED5E00E6B2CC /* AutoLogTests.swift */; };
+		E6840B7220BAF61400FEFCB7 /* DrivingActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6840B7120BAF61400FEFCB7 /* DrivingActivitiesViewController.swift */; };
 		E69DC3FC20B4AE3700BEDC57 /* DateRangePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC3FB20B4AE3700BEDC57 /* DateRangePickerViewController.swift */; };
 		E69DC3FE20B4AE6D00BEDC57 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC3FD20B4AE6D00BEDC57 /* ActivitiesViewController.swift */; };
 		E69DC40020B54B2A00BEDC57 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC3FF20B54B2A00BEDC57 /* Extensions.swift */; };
@@ -48,6 +49,7 @@
 		E65DD24820A4ED5E00E6B2CC /* AutoLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65DD24C20A4ED5E00E6B2CC /* AutoLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLogTests.swift; sourceTree = "<group>"; };
 		E65DD24E20A4ED5E00E6B2CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6840B7120BAF61400FEFCB7 /* DrivingActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingActivitiesViewController.swift; sourceTree = "<group>"; };
 		E69DC3FB20B4AE3700BEDC57 /* DateRangePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangePickerViewController.swift; sourceTree = "<group>"; };
 		E69DC3FD20B4AE6D00BEDC57 /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		E69DC3FF20B54B2A00BEDC57 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				E69DC40120B55CBA00BEDC57 /* SignificantLocationsViewController.swift */,
 				E69DC40320B55CC400BEDC57 /* VisitsViewController.swift */,
 				E60C249020B592A9009AD0D9 /* MapViewController.swift */,
+				E6840B7120BAF61400FEFCB7 /* DrivingActivitiesViewController.swift */,
 				E65DD23820A4ED5C00E6B2CC /* Main.storyboard */,
 				E65DD23E20A4ED5E00E6B2CC /* Assets.xcassets */,
 				E65DD24020A4ED5E00E6B2CC /* LaunchScreen.storyboard */,
@@ -250,6 +253,7 @@
 				E69DC40620B55E5600BEDC57 /* Storage.swift in Sources */,
 				E69DC3FC20B4AE3700BEDC57 /* DateRangePickerViewController.swift in Sources */,
 				E69DC40420B55CC400BEDC57 /* VisitsViewController.swift in Sources */,
+				E6840B7220BAF61400FEFCB7 /* DrivingActivitiesViewController.swift in Sources */,
 				E65DD23520A4ED5C00E6B2CC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

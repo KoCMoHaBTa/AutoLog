@@ -11,6 +11,7 @@ import UIKit
 import UserNotifications
 import ContactsUI
 import CoreLocation
+import CoreMotion
 
 extension UNMutableNotificationContent {
     
@@ -120,5 +121,3 @@ extension CNMutablePostalAddress {
         }
     }
 }
-
-
