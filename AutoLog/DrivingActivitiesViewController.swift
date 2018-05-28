@@ -31,6 +31,17 @@ class DrivingActivitiesViewController: UITableViewController {
         self.loadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destination = segue.destination as! MapViewController
+        
+        if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
+            
+            let activity = self.activities[indexPath.row]
+            destination.points = activity.locations
+        }
+    }
+    
     private func loadData() {
         
         DrivingActivity.load(from: self.start, to: self.end) { [weak self] (activities) in

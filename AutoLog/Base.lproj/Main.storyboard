@@ -425,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxz-zM-NOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2566" y="1673"/>
+            <point key="canvasLocation" x="3962" y="1677"/>
         </scene>
         <!--Visits-->
         <scene sceneID="gId-eD-gEz">
@@ -542,6 +542,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="nKn-Tw-Wnx" kind="show" id="v98-EM-blW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -581,6 +584,6 @@
         <image name="walking" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P3u-Lo-Nrd"/>
+        <segue reference="v98-EM-blW"/>
     </inferredMetricsTieBreakers>
 </document>
