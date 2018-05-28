@@ -395,7 +395,7 @@
             </objects>
             <point key="canvasLocation" x="1678" y="1980"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="yN0-Wc-9BO">
             <objects>
                 <viewController id="nKn-Tw-Wnx" customClass="MapViewController" customModule="AutoLog" customModuleProvider="target" sceneMemberID="viewController">
@@ -419,6 +419,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="saD-1W-ru8"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Map" id="5U8-On-inK">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="automotive" id="EYX-dJ-z78">
+                            <connections>
+                                <action selector="showRoute" destination="nKn-Tw-Wnx" id="nOk-Yg-Kqn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="des-Lk-HkL" id="rvT-jD-N9a"/>
                     </connections>
