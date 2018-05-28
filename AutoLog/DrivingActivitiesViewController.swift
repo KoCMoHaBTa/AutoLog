@@ -124,7 +124,7 @@ class DrivingActivity {
                 //if we are driving - look for activity with `walking` == true in order to stop driving, otherwise add this activity to the result
                 if isDriving == true {
                     
-                    if activity.walking == true {
+                    if activity.walking == true || activity.running == true || activity.cycling == true {
                         
                         isDriving = false
                         let end = activity.startDate
